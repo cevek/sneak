@@ -1,4 +1,4 @@
-///<reference path="Sneak.ts"/>
+///<reference path="Sneak2.ts"/>
 ///<reference path="View.ts"/>
 module sneak {
     export enum Direction{

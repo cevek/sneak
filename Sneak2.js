@@ -1,4 +1,4 @@
-///<reference path="Game.ts"/>
+///<reference path="Game2.ts"/>
 var sneak;
 (function (sneak) {
     /**
@@ -73,4 +73,4 @@ var sneak;
     })();
     sneak.Sneak = Sneak;
 })(sneak || (sneak = {}));
-//# sourceMappingURL=Sneak.js.map
+//# sourceMappingURL=Sneak2.js.map
