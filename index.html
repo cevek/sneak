@@ -3,53 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<style>
-    #game {
-        font-family: Tahoma;
-        position: relative;
-        border: 2px solid gray;
-        /*padding: 3px;*/
-        display: inline-block;
-        line-height: 0;
-    }
-
-    #game .row {
-    }
-
-    #game .point {
-        display: inline-block;
-        margin: -1px -1px 0 0;
-        width: 20px;
-        height: 20px;
-        border: 1px solid #FAFAFA;
-    }
-
-    #game .point.filled {
-        background: #9eccff;
-    }
-
-    #game .lost {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        text-align: center;
-        background: rgba(0, 0, 0, .3);
-    }
-
-    #game .lost.hidden {
-        display: none;
-    }
-
-    #game .lost .text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        transform: translate(-50%, -50%);
-    }
-</style>
 <div id="game">
     <div class="lost">
         <div class="text">
@@ -58,7 +14,11 @@
         </div>
     </div>
 </div>
-<script src="game.js"></script>
-
+<script src="View.js"></script>
+<script src="Sneak.js"></script>
+<script src="Game.js"></script>
+<script>
+    new sneak.Game(document.getElementById('game'));
+</script>
 </body>
 </html>
