@@ -103,4 +103,4 @@ var sneak;
     })();
     sneak.Game = Game;
 })(sneak || (sneak = {}));
-//# sourceMappingURL=Game.js.map
+//# sourceMappingURL=Game2.js.map
