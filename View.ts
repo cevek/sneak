@@ -1,4 +1,4 @@
-///<reference path="Sneak2.ts"/>
+///<reference path="Sneak.ts"/>
 module sneak{
     /**
      * Объект вьюшной точки

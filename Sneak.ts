@@ -1,76 +1,78 @@
-///<reference path="Game2.ts"/>
-var sneak;
-(function (sneak) {
+///<reference path="Game.ts"/>
+module sneak {
     /**
      * Модель змейки
      */
-    var Sneak = (function () {
-        function Sneak(field) {
-            this.points = [];
-            this.direction = sneak.Direction.DOWN;
+    export class Sneak {
+        points:Point[] = [];
+        direction:Direction = Direction.DOWN;
+        field:Field;
+
+        constructor(field:Field) {
             this.field = field;
             this.points.push(this.field.getRandomPoint());
         }
+
         /**
          * Пересечение с точкой
          */
-        Sneak.prototype.isCrossed = function (point) {
-            for (var _i = 0, _a = this.points; _i < _a.length; _i++) {
-                var p = _a[_i];
+        isCrossed(point:Point) {
+            for (var p of this.points) {
                 if (point.isEqual(p)) {
                     return true;
                 }
             }
             return false;
-        };
+        }
+
         /**
          * Пересекли себя
          */
-        Sneak.prototype.crossMySelf = function (nextPoint) {
-            return this.points.some(function (point) { return point.isEqual(nextPoint); });
-        };
+        crossMySelf(nextPoint:Point) {
+            return this.points.some(point => point.isEqual(nextPoint));
+        }
+
         /**
          * Сдвинуть змейку
          * возвращает true если удалось сдвинуть, false если нет - проигрыш
          */
-        Sneak.prototype.moveNext = function () {
+        moveNext() {
             var lastPoint = this.points[this.points.length - 1];
             var nextX = lastPoint.x;
             var nextY = lastPoint.y;
             switch (this.direction) {
-                case sneak.Direction.LEFT:
+                case Direction.LEFT:
                     nextX--;
                     break;
-                case sneak.Direction.RIGHT:
+                case Direction.RIGHT:
                     nextX++;
                     break;
-                case sneak.Direction.UP:
+                case Direction.UP:
                     nextY--;
                     break;
-                case sneak.Direction.DOWN:
+                case Direction.DOWN:
                     nextY++;
                     break;
             }
-            var nextPoint = new sneak.Point(nextX, nextY);
+            var nextPoint = new Point(nextX, nextY);
             if (this.field.isOutside(nextPoint) || this.crossMySelf(nextPoint)) {
                 return false;
             }
             this.points.shift();
             this.points.push(nextPoint);
             return true;
-        };
-        Sneak.prototype.setDirection = function (dir) {
+        }
+
+        setDirection(dir:Direction) {
             this.direction = dir;
-        };
+        }
+
         /**
          * Съесть еду
          */
-        Sneak.prototype.eat = function (point) {
+        eat(point:Point) {
             this.points.push(point);
             this.moveNext();
-        };
-        return Sneak;
-    })();
-    sneak.Sneak = Sneak;
-})(sneak || (sneak = {}));
-//# sourceMappingURL=Sneak2.js.map
+        }
+    }
+}
